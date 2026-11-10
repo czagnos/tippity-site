@@ -21,7 +21,7 @@ SITE = "https://czagnos.github.io/tippity-site/"
 OUTBOUND = ("https://docs.github.com/", "https://apps.apple.com/")
 BANNED_TAGS = {"script", "style", "iframe", "frame", "object", "embed", "form", "input", "base", "applet"}
 SECRETS = [
-    (r"script\.google\.com", "an Apps Script address (the game's telemetry endpoint stays private)"),
+    (r"script\.google\.com", "an Apps Script address (private service addresses stay out of this repository)"),
     (r"AKfy[0-9A-Za-z_-]{20,}", "an Apps Script deployment ID"),
     (r"-----BEGIN [A-Z ]*PRIVATE KEY-----", "a private key"),
     (r"\bgh[pousr]_[0-9A-Za-z]{30,}|github_pat_[0-9A-Za-z_]{30,}", "a GitHub token"),

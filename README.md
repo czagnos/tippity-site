@@ -44,8 +44,8 @@ website itself.
   websites; the fonts and the images are served from here.
 - Every page carries a Content Security Policy that allows only this site's own styles, images and fonts, and no
   scripts at all. GitHub Pages can't send headers, so it is a `<meta>` tag.
-- Nothing secret belongs here: the repository is public, and its history keeps everything ever committed. No keys, no
-  tokens, and not the game's telemetry address.
+- Nothing secret belongs here: the repository is public, and its history keeps everything ever committed. No keys,
+  tokens or private service addresses.
 - Images have their metadata (EXIF and the like) stripped before they are committed.
 - Commits use GitHub's no-reply email address, so no personal address or computer name goes into the history.
 - `python3 tools/check.py` checks all of this; run it before every commit. `--publish` also fails while a blank is
