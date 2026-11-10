@@ -4,7 +4,8 @@
     python3 tools/build_privacy.py path/to/privacy-policy.md
 
 Only the Markdown the policy uses is read: a title (#), sections (##, ###), paragraphs, lists (- ), **bold**,
-[links](https://...) and {{placeholders}}, which show as marked blanks until they are filled. HTML comments are left
+[links](https://...), email addresses (as mail links) and {{placeholders}}, which show as marked blanks until they
+are filled. HTML comments are left
 out. Everything else is escaped, so the page carries no markup the policy did not ask for. Python's standard library
 only.
 """
@@ -91,6 +92,7 @@ def inline(text):
     out = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", out)
     out = re.sub(r"\[([^\]]+)\]\((https://[^)\s\"<>]+)\)", lambda m: f'<a href="{html.escape(m.group(2))}">{m.group(1)}</a>', out)
     out = re.sub(r"\{\{(.+?)\}\}", r'<mark class="todo">\1</mark>', out)
+    out = re.sub(r"(?<![\w.@\"/])([\w.+-]+@[\w-]+(?:\.[\w-]+)+)", r'<a href="mailto:\1">\1</a>', out)
     if re.search(r"\*\*|\]\(|\{\{|\}\}", out):
         raise SystemExit(f"Markdown this script does not read: {text!r}")
     return out
